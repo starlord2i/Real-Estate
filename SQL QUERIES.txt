@@ -1,0 +1,15 @@
+Role Table:
+
+		create table role(role_id int primary key, role_name varchar(30));
+		
+User Table:
+
+		create table user(role_id int, user_id int AUTO_INCREMENT primary key, name varchar(100), email varchar(100),password_r varchar(100), Phone_NO  BIGINT, role_name varchar(50), constraint f_roleid foreign key(role_id) references role(role_id)); 
+
+Site Table:
+
+		create table site(site_id int AUTO_INCREMENT primary key, user_id int, prop_type varchar(100) , location varchar(100), amount int, purpose varchar(50), availability varchar(50),constraint s_userid foreign key(user_id) references user(user_id) ON DELETE CASCADE);
+
+Booking Table:
+
+		create table booking(user_id int, site_id int, intrested varchar(50), Date_of_book date, card_no bigint,sellar_name varchar(100),buyer_name varchar(100), constraint f_userid foreign key(user_id) references user(user_id) ON DELETE CASCADE, constraint f_siteid foreign key(site_id) references site(site_id) ON DELETE CASCADE); 
